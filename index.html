@@ -26,7 +26,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-6">
+      <div class="col-4">
         <img src="me.jpg" class="img-thumbnail" style="width:500px;height:667px;" /> <br><br>
         <button id="image1Like" type=button style="background-color:#5EA1F8;"><label
             style="color: black; font-weight: bold;">Like</label> &nbsp <output id="numberLikes1"
@@ -47,7 +47,7 @@
             style="color: black; font-weight: bold;">Angry</label> &nbsp <output id="numberAngry1"
             style="color: black; font-weight: bold;">0</output></button>
       </div>
-      <div class="col-6">
+      <div class="col-4">
         <img src="mybetterhalf.jpg" class="img-thumbnail" style="width:500px;height:667px;" /> <br><br>
         <button id="image2Like" type=button style="background-color:#5EA1F8;"><label
             style="color: black; font-weight: bold;">Like</label> &nbsp <output id="numberLikes2"
@@ -67,6 +67,12 @@
         <button id="image2Angry" type=button style="background-color:#FF2F2F;"><label
             style="color: black; font-weight: bold;">Angry</label> &nbsp <output id="numberAngry2"
             style="color: black; font-weight: bold;">0</output></button>
+      </div>
+      <div class="col-4">
+        <label style="font-size: 25px; margin-bottom: 10px;">Comments</label><br>
+        <input type="text" class="form-control" id="comment">
+        <button id="btnComment" style="background-color: navy; margin-top: 10px; margin-bottom: 10px; width: 100%; border-radius: 10px; height: 50px; font-size: 25px; font-weight: bold; border-color: navy;">Submit</button>
+        <textarea class="form-control" id="commentbox" rows="20"></textarea>
       </div>
     </div>
   </div>
@@ -96,6 +102,11 @@
     const numberSad2 = document.getElementById("numberSad2");
     const image2Angry = document.getElementById("image2Angry");
     const numberAngry2 = document.getElementById("numberAngry2");
+
+    const btnComment = document.getElementById("btnComment");
+    const comment = document.getElementById("comment");
+    const commentbox = document.getElementById("commentbox");
+
 
     function countLikes1() {
       let countL1 = parseInt(numberLikes1.textContent);
@@ -169,6 +180,11 @@
       numberAngry2.textContent = countA2.toString();
     }
 
+    function commentFunc() {
+      commentbox.textContent += comment.value.toString() + "\n";
+      comment.value="";
+    }
+
     document.getElementById('image1Like').onclick = countLikes1;
     document.getElementById('image1Heart').onclick = countHeart1;
     document.getElementById('image1Laugh').onclick = countLaugh1;
@@ -182,6 +198,8 @@
     document.getElementById('image2Wow').onclick = countWow2;
     document.getElementById('image2Sad').onclick = countSad2;
     document.getElementById('image2Angry').onclick = countAngry2;
+
+    document.getElementById('btnComment').onclick = commentFunc;
   </script>
 
 </body>
